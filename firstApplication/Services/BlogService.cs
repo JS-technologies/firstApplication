@@ -26,14 +26,14 @@ namespace firstApplication.Services
         public BlogPostsV2 LoadDetails(int id, int siteId = 1)
         {
             var blogDetails = (from b in _context.BlogPostsV2
-                         where b.SiteId == siteId && b.Id == id
-                         select b).FirstOrDefault();
+                               where b.SiteId == siteId && b.Id == id
+                               select b).FirstOrDefault();
             return blogDetails;
         }
 
-        public BlogPostsV2 AddBlog(int id, int SiteId, string LangCode, string Title, string MetaDescription, string Content, 
+        public BlogPostsV2 AddBlog(int id, int SiteId, string LangCode, string Title, string MetaDescription, string Content,
             string Url, bool ShowInHp, string label, string MetaTags, string RedirectUrl, DateTime? PublishEndDate,
-            int Status, int redirectionType, int SEOScore, string CoverImageUrl, string Tags, string HeaderTags, string Categories, 
+            int Status, int redirectionType, int SEOScore, string CoverImageUrl, string Tags, string HeaderTags, string Categories,
             string HomePageImageUrl, string CoverImageAlt, string HomePageImageAlt,
             string AssociatedProducts, bool ShowInPDPCategories, bool ShowInPDPProducts)
         {
@@ -98,6 +98,17 @@ namespace firstApplication.Services
             _context.Add(blogToAdd);
             _context.SaveChangesAsync();
             return blogToAdd;
+        }
+
+        public BlogPostsV2 deleteBlog(int id)
+        {
+            var blogToDelete = (from b in _context.BlogPostsV2
+                                where b.Id == id
+                                select b).FirstOrDefault();
+
+            _context.BlogPostsV2.Remove(blogToDelete);
+            _context.SaveChangesAsync();
+            return blogToDelete;
         }
     }
 }

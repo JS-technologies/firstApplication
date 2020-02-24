@@ -124,38 +124,35 @@ namespace firstApplication.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(blogPostsV2);
-        }
+        }*/
 
         // GET: Post/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var blogPostsV2 = await _context.BlogPostsV2
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var blogPostsV2 = bService.deleteBlog(id);
             if (blogPostsV2 == null)
             {
                 return NotFound();
             }
 
-            return View(blogPostsV2);
+            return RedirectToAction("Index");
         }
 
         // POST: Post/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var blogPostsV2 = await _context.BlogPostsV2.FindAsync(id);
-            _context.BlogPostsV2.Remove(blogPostsV2);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var blogPostsV2 = bService.deleteBlog(id);
+            return RedirectToAction("Index");
         }
 
-        private bool BlogPostsV2Exists(int id)
+        /*private bool BlogPostsV2Exists(int id)
         {
             return _context.BlogPostsV2.Any(e => e.Id == id);
         }*/
