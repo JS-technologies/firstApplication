@@ -1,0 +1,180 @@
+﻿@model firstApplication.Models.BlogPostsV2
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>BlogPostsV2</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="SiteId" class="control-label"></label>
+                <input asp-for="SiteId" class="form-control" />
+                <span asp-validation-for="SiteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LangCode" class="control-label"></label>
+                <input asp-for="LangCode" class="form-control" />
+                <span asp-validation-for="LangCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaDescription" class="control-label"></label>
+                <input asp-for="MetaDescription" class="form-control" />
+                <span asp-validation-for="MetaDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <input asp-for="Content" class="form-control" />
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Url" class="control-label"></label>
+                <input asp-for="Url" class="form-control" />
+                <span asp-validation-for="Url" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ShowInHp" /> @Html.DisplayNameFor(model => model.ShowInHp)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Label" class="control-label"></label>
+                <input asp-for="Label" class="form-control" />
+                <span asp-validation-for="Label" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaTags" class="control-label"></label>
+                <input asp-for="MetaTags" class="form-control" />
+                <span asp-validation-for="MetaTags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateModified" class="control-label"></label>
+                <input asp-for="DateModified" class="form-control" />
+                <span asp-validation-for="DateModified" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RedirectUrl" class="control-label"></label>
+                <input asp-for="RedirectUrl" class="form-control" />
+                <span asp-validation-for="RedirectUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublishStartDate" class="control-label"></label>
+                <input asp-for="PublishStartDate" class="form-control" />
+                <span asp-validation-for="PublishStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublishEndDate" class="control-label"></label>
+                <input asp-for="PublishEndDate" class="form-control" />
+                <span asp-validation-for="PublishEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RedirectionType" class="control-label"></label>
+                <input asp-for="RedirectionType" class="form-control" />
+                <span asp-validation-for="RedirectionType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seoscore" class="control-label"></label>
+                <input asp-for="Seoscore" class="form-control" />
+                <span asp-validation-for="Seoscore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoverImageUrl" class="control-label"></label>
+                <input asp-for="CoverImageUrl" class="form-control" />
+                <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tags" class="control-label"></label>
+                <input asp-for="Tags" class="form-control" />
+                <span asp-validation-for="Tags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeaderTags" class="control-label"></label>
+                <input asp-for="HeaderTags" class="form-control" />
+                <span asp-validation-for="HeaderTags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Categories" class="control-label"></label>
+                <input asp-for="Categories" class="form-control" />
+                <span asp-validation-for="Categories" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedById" class="control-label"></label>
+                <input asp-for="CreatedById" class="form-control" />
+                <span asp-validation-for="CreatedById" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastModifiedById" class="control-label"></label>
+                <input asp-for="LastModifiedById" class="form-control" />
+                <span asp-validation-for="LastModifiedById" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="HomePageImageUrl" class="control-label"></label>
+                <input asp-for="HomePageImageUrl" class="form-control" />
+                <span asp-validation-for="HomePageImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoverImageAlt" class="control-label"></label>
+                <input asp-for="CoverImageAlt" class="form-control" />
+                <span asp-validation-for="CoverImageAlt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HomePageImageAlt" class="control-label"></label>
+                <input asp-for="HomePageImageAlt" class="form-control" />
+                <span asp-validation-for="HomePageImageAlt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssociatedProducts" class="control-label"></label>
+                <input asp-for="AssociatedProducts" class="form-control" />
+                <span asp-validation-for="AssociatedProducts" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ShowInPdpcategories" /> @Html.DisplayNameFor(model => model.ShowInPdpcategories)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ShowInPdpproducts" /> @Html.DisplayNameFor(model => model.ShowInPdpproducts)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

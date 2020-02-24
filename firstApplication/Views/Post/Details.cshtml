@@ -1,0 +1,199 @@
+﻿@model firstApplication.Models.BlogPostsV2
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>BlogPostsV2</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SiteId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SiteId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LangCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LangCode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MetaDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MetaDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.Content)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShowInHp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShowInHp)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Label)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Label)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MetaTags)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MetaTags)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateModified)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateModified)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RedirectUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RedirectUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PublishStartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PublishStartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PublishEndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PublishEndDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RedirectionType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RedirectionType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seoscore)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seoscore)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CoverImageUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CoverImageUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tags)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HeaderTags)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HeaderTags)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Categories)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Categories)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedById)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedById)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastModifiedById)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastModifiedById)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HomePageImageUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HomePageImageUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CoverImageAlt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CoverImageAlt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HomePageImageAlt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HomePageImageAlt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssociatedProducts)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssociatedProducts)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShowInPdpcategories)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShowInPdpcategories)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShowInPdpproducts)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShowInPdpproducts)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

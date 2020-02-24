@@ -1,0 +1,322 @@
+﻿@model firstApplication.Models.BlogPostsV2
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/Create.css" />
+    }
+<div class="row">
+    <div class="col-md-12 mt-3">
+        <form asp-action="Create" method="post">
+            <div class="card col-md-12 p-3">
+                <div class="card-header bg-light col-md-12">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="Status" class="control-label font-weight-bold"></label><br />
+
+                                <input asp-for="Status" type="radio" id="live" name="Status" value="1" checked="checked">
+                                <label for="live">LIVE</label><br />
+
+                                <input asp-for="Status" type="radio" id="archived" name="Status" value="2">
+                                <label for="archived">ARCHIVED</label><br />
+
+                                <input asp-for="Status" type="radio" id="scheduled" name="Status" value="3">
+                                <label for="scheduled">SCHEDULED</label><br />
+
+                                <input asp-for="Status" type="radio" id="draft" name="Status" value="4">
+                                <label for="draft">DRAFT</label>
+
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                        </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="LangCode" class="control-label"></label>
+                                    <select asp-for="LangCode">
+                                        <option value="fr-FR">fr-FR</option>
+                                        <option value="it-IT">it-IT</option>
+                                        <option value="mt-MT">mt-MT</option>
+                                    </select>
+                                    <span asp-validation-for="LangCode" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Label:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input asp-for="Label" class="form-control" placeholder="Label"/>
+                                <span asp-validation-for="Label" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Site ID:</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input asp-for="SiteId" class="form-control" placeholder="Site ID"/>
+                                <span asp-validation-for="SiteId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">URL:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input asp-for="Url" class="form-control" placeholder="URL"/>
+                                <span asp-validation-for="Url" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="col-md-3">
+                                    <div class="form-group form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" asp-for="ShowInHp" /> <br /><label class="font-weight-bold">Show in HP</label>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Title:</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input asp-for="Title" class="form-control" placeholder="Title"/>
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">HP Image URL:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input asp-for="HomePageImageUrl" class="form-control" placeholder="HP Image URL"/>
+                                <span asp-validation-for="HomePageImageUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">HP Image Alt:</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input asp-for="HomePageImageAlt" class="form-control" placeholder="HP Image Alt"/>
+                                <span asp-validation-for="HomePageImageAlt" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Cover Photo URL:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input asp-for="CoverImageUrl" class="form-control" placeholder="Cover Photo URL"/>
+                                <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Cover Photo Alt:</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input asp-for="CoverImageAlt" class="form-control" placeholder="Cover Photo Alt"/>
+                                <span asp-validation-for="CoverImageAlt" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">SEO Score:</label>
+                            </div>
+
+                            <div class="col-md-9">
+                                <div class="range">
+                                    <input asp-for="Seoscore" name="Seoscore" id="seoScoreId" type="range" min="0" max="200000" value="100000" class="slider" oninput="seoScoreOutputId.value = seoScoreId.value">
+                                    <div class="sliderticks">
+                                        <p>0</p>
+                                        <p>50000</p>
+                                        <p>100000</p>
+                                        <p>150000</p>
+                                        <p>200000</p>
+                                    </div>
+
+                                    <span asp-validation-for="Seoscore" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <output name="Seoscore" id="seoScoreOutputId" class="font-weight-bold">100000</output>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Meta Description:</label>
+                            </div>
+
+                            <div class="col-md-10">
+                                <input asp-for="MetaDescription" class="form-control" placeholder="Meta Description"/>
+                                <span asp-validation-for="MetaDescription" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Meta Tags:</label>
+                            </div>
+
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <input asp-for="MetaTags" class="form-control" placeholder="Meta tag" />
+                                    <span asp-validation-for="MetaTags" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Header Tags:</label>
+                            </div>
+
+                            <div class="col-md-10">
+                                <textarea asp-for="HeaderTags" class="form-control" placeholder="Header Tags"></textarea>
+                                <span asp-validation-for="HeaderTags" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Categories:</label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <input asp-for="Categories" class="form-control" placeholder="Categories"/>
+                                <span asp-validation-for="Categories" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group form-check">
+                                    <input class="form-check-input" asp-for="ShowInPdpcategories" /><label class="font-weight-bold">Display in PDP</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Related Products:</label>
+                            </div>
+
+                            <div class="col-md-8">
+                                <input asp-for="AssociatedProducts" class="form-control" placeholder="Related Products"/>
+                                <span asp-validation-for="AssociatedProducts" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group form-check">
+                                    <input class="form-check-input" asp-for="ShowInPdpproducts" /><label class="font-weight-bold">Display in PDP</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Content:</label>
+                            </div>
+                            <div class="col-md-10">
+                                <textarea id="mytextarea" asp-for="Content" class="form-control"></textarea>
+                                <span asp-validation-for="Content" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Tags:</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input asp-for="Tags" class="form-control" placeholder="Tags" />
+                                <span asp-validation-for="Tags" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Redirect URL:</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input asp-for="RedirectUrl" class="form-control" placeholder="Redirect URL"/>
+                                <span asp-validation-for="RedirectUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="font-weight-bold" style="float:right">Redirection Type:</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input asp-for="RedirectionType" class="form-control" placeholder="Redirection Type"/>
+                                <span asp-validation-for="RedirectionType" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-light">
+                    <div class="form-group" style="float:right">
+                        <a type="button" class="btn btn-secondary" asp-action="Index">Back to List</a>
+                        <input type="submit" value="Create" class="btn btn-secondary" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
