@@ -15,50 +15,30 @@ namespace firstApplication.Services
             _context = pContext;
         }
 
-        public List<BlogPostsV2> LoadBlogs(int siteId = 1)
+        public List<BlogPostsV2> LoadBlogs()
         {
             var blogs = (from b in _context.BlogPostsV2
-                         where b.SiteId == siteId && b.IsDeleted == false
                          select b).ToList();
             return blogs;
         }
 
-        public BlogPostsV2 LoadDetails(int id, int siteId = 1)
+        public BlogPostsV2 LoadDetails(int id)
         {
             var blogDetails = (from b in _context.BlogPostsV2
-                               where b.SiteId == siteId && b.Id == id
+                               where b.Id == id
                                select b).FirstOrDefault();
             return blogDetails;
         }
 
-        public BlogPostsV2 AddBlog(int id, int SiteId, string LangCode, string Title, string MetaDescription, string Content,
-            string Url, bool ShowInHp, string label, string MetaTags, string RedirectUrl, DateTime? PublishEndDate,
-            int Status, int redirectionType, int SEOScore, string CoverImageUrl, string Tags, string HeaderTags, string Categories,
-            string HomePageImageUrl, string CoverImageAlt, string HomePageImageAlt,
-            string AssociatedProducts, bool ShowInPDPCategories, bool ShowInPDPProducts)
+        public BlogPostsV2 AddBlog(BlogPostsV2 blogToAdd)
         {
-
-            var blogToAdd = new BlogPostsV2();
-
-            blogToAdd.Id = id;
-            blogToAdd.SiteId = SiteId;
-            blogToAdd.LangCode = LangCode;
-            blogToAdd.Title = Title;
-            blogToAdd.MetaDescription = MetaDescription;
-            blogToAdd.Content = Content;
-            blogToAdd.Url = Url;
-            blogToAdd.ShowInHp = ShowInHp;
-            blogToAdd.Label = label;
-            blogToAdd.MetaTags = MetaTags;
             DateTime dateCreated = DateTime.Now;
             DateTime dateModified = DateTime.Now;
             blogToAdd.DateCreated = dateCreated;
             blogToAdd.DateModified = dateModified;
-            blogToAdd.RedirectUrl = RedirectUrl;
             DateTime startDate = DateTime.Now;
             blogToAdd.PublishStartDate = startDate;
             blogToAdd.PublishEndDate = null;
-            blogToAdd.Status = (BlogPostStatus)Status;
             //BlogPostStatus stat = BlogPostStatus.Live; 
             //switch(Status)
             //{
@@ -80,21 +60,11 @@ namespace firstApplication.Services
             //}
 
             //blogToAdd.Status = stat;
-            blogToAdd.RedirectionType = redirectionType;
-            blogToAdd.Seoscore = SEOScore;
-            blogToAdd.CoverImageUrl = CoverImageUrl;
-            blogToAdd.Tags = Tags;
-            blogToAdd.HeaderTags = HeaderTags;
-            blogToAdd.Categories = Categories;
+            
             blogToAdd.CreatedById = 15;
             blogToAdd.LastModifiedById = 15;
             blogToAdd.IsDeleted = false;
-            blogToAdd.HomePageImageUrl = HomePageImageUrl;
-            blogToAdd.CoverImageAlt = CoverImageAlt;
-            blogToAdd.HomePageImageAlt = HomePageImageAlt;
-            blogToAdd.AssociatedProducts = AssociatedProducts;
-            blogToAdd.ShowInPdpcategories = ShowInPDPCategories;
-            blogToAdd.ShowInPdpproducts = ShowInPDPProducts;
+           
             _context.Add(blogToAdd);
             _context.SaveChangesAsync();
             return blogToAdd;
@@ -109,6 +79,48 @@ namespace firstApplication.Services
             _context.BlogPostsV2.Remove(blogToDelete);
             _context.SaveChangesAsync();
             return blogToDelete;
+        }
+
+        public BlogPostsV2 getByBlogById(int? id)
+        {
+            var blogPostToEdit = (from b in _context.BlogPostsV2
+                                  where b.Id == id
+                                  select b).FirstOrDefault();
+            return blogPostToEdit;
+        }
+
+        public BlogPostsV2 editBlog(BlogPostsV2 blogToEdit)
+        {
+
+            blogToEdit.CreatedById = 15;
+            blogToEdit.LastModifiedById = 15;
+            DateTime dateCreated = DateTime.Now;
+            DateTime dateModified = DateTime.Now;
+            blogToEdit.DateCreated = dateCreated;
+            blogToEdit.DateModified = dateModified;
+            DateTime startDate = DateTime.Now;
+            blogToEdit.PublishStartDate = startDate;
+
+            _context.BlogPostsV2.Update(blogToEdit);
+            _context.SaveChangesAsync();
+            return blogToEdit;
+        }
+
+        public bool checkIfBlogExists(int id)
+        {
+            bool decider;
+            var blogPostToEdit = (from b in _context.BlogPostsV2
+                                  where b.Id == id
+                                  select b).FirstOrDefault();
+            if(blogPostToEdit != null)
+            {
+                decider = true;
+            }
+            else
+            {
+                decider = false;
+            }
+            return decider;
         }
     }
 }

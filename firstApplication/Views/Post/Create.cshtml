@@ -6,7 +6,7 @@
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/Create.css" />
-    }
+}
 <div class="row">
     <div class="col-md-12 mt-3">
         <form asp-action="Create" method="post">
@@ -34,30 +34,30 @@
                         </div>
                         <div class="col-md-5">
                         </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label asp-for="LangCode" class="control-label"></label>
-                                    <select asp-for="LangCode">
-                                        <option value="fr-FR">fr-FR</option>
-                                        <option value="it-IT">it-IT</option>
-                                        <option value="mt-MT">mt-MT</option>
-                                    </select>
-                                    <span asp-validation-for="LangCode" class="text-danger"></span>
-                                </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label asp-for="LangCode" class="control-label"></label>
+                                <select asp-for="LangCode" class="langCode">
+                                    <option value="fr-FR">fr-FR</option>
+                                    <option value="it-IT">it-IT</option>
+                                    <option value="mt-MT">mt-MT</option>
+                                </select>
+                                <span asp-validation-for="LangCode" class="text-danger"></span>
                             </div>
-
                         </div>
+
                     </div>
+                </div>
                 <div class="card-body">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Label:</label>
+                                <label class="font-weight-bold lbl">Label:</label>
                             </div>
                             <div class="col-md-6">
-                                <input asp-for="Label" class="form-control" placeholder="Label"/>
+                                <input asp-for="Label" class="form-control label" placeholder="Label" />
                                 <span asp-validation-for="Label" class="text-danger"></span>
                             </div>
                         </div>
@@ -65,10 +65,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Site ID:</label>
+                                <label class="font-weight-bold lbl">Site ID:</label>
                             </div>
                             <div class="col-md-10">
-                                <input asp-for="SiteId" class="form-control" placeholder="Site ID"/>
+                                <input asp-for="SiteId" class="form-control siteID" placeholder="Site ID" />
                                 <span asp-validation-for="SiteId" class="text-danger"></span>
                             </div>
                         </div>
@@ -76,17 +76,17 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">URL:</label>
+                                <label class="font-weight-bold lbl">URL:</label>
                             </div>
                             <div class="col-md-6">
-                                <input asp-for="Url" class="form-control" placeholder="URL"/>
+                                <input asp-for="Url" class="form-control URL" placeholder="URL" />
                                 <span asp-validation-for="Url" class="text-danger"></span>
                             </div>
                             <div class="col-md-2">
                                 <div class="col-md-3">
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" asp-for="ShowInHp" /> <br /><label class="font-weight-bold">Show in HP</label>
+                                            <input class="form-check-input showInHP" asp-for="ShowInHp" /> <br /><label class="font-weight-bold">Show in HP</label>
                                         </label>
                                     </div>
                                 </div>
@@ -96,10 +96,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Title:</label>
+                                <label class="font-weight-bold lbl">Title:</label>
                             </div>
                             <div class="col-md-10">
-                                <input asp-for="Title" class="form-control" placeholder="Title"/>
+                                <input asp-for="Title" class="form-control Title" placeholder="Title" />
                                 <span asp-validation-for="Title" class="text-danger"></span>
                             </div>
                         </div>
@@ -107,10 +107,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">HP Image URL:</label>
+                                <label class="font-weight-bold lbl">HP Image URL:</label>
                             </div>
                             <div class="col-md-6">
-                                <input asp-for="HomePageImageUrl" class="form-control" placeholder="HP Image URL"/>
+                                <input asp-for="HomePageImageUrl" class="form-control HPInputURL" placeholder="HP Image URL" />
                                 <span asp-validation-for="HomePageImageUrl" class="text-danger"></span>
                             </div>
                         </div>
@@ -119,10 +119,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">HP Image Alt:</label>
+                                <label class="font-weight-bold lbl">HP Image Alt:</label>
                             </div>
                             <div class="col-md-10">
-                                <input asp-for="HomePageImageAlt" class="form-control" placeholder="HP Image Alt"/>
+                                <input asp-for="HomePageImageAlt" class="form-control HPImageAlt" placeholder="HP Image Alt" />
                                 <span asp-validation-for="HomePageImageAlt" class="text-danger"></span>
                             </div>
                         </div>
@@ -131,10 +131,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Cover Photo URL:</label>
+                                <label class="font-weight-bold lbl">Cover Photo URL:</label>
                             </div>
                             <div class="col-md-6">
-                                <input asp-for="CoverImageUrl" class="form-control" placeholder="Cover Photo URL"/>
+                                <input asp-for="CoverImageUrl" class="form-control coverImageURL" placeholder="Cover Photo URL" />
                                 <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
                             </div>
                         </div>
@@ -143,10 +143,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Cover Photo Alt:</label>
+                                <label class="font-weight-bold lbl">Cover Photo Alt:</label>
                             </div>
                             <div class="col-md-10">
-                                <input asp-for="CoverImageAlt" class="form-control" placeholder="Cover Photo Alt"/>
+                                <input asp-for="CoverImageAlt" class="form-control coverPhotoALT" placeholder="Cover Photo Alt" />
                                 <span asp-validation-for="CoverImageAlt" class="text-danger"></span>
                             </div>
                         </div>
@@ -155,7 +155,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">SEO Score:</label>
+                                <label class="font-weight-bold lbl">SEO Score:</label>
                             </div>
 
                             <div class="col-md-9">
@@ -181,11 +181,11 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Meta Description:</label>
+                                <label class="font-weight-bold lbl">Meta Description:</label>
                             </div>
 
                             <div class="col-md-10">
-                                <input asp-for="MetaDescription" class="form-control" placeholder="Meta Description"/>
+                                <input asp-for="MetaDescription" class="form-control metaDescription" placeholder="Meta Description" />
                                 <span asp-validation-for="MetaDescription" class="text-danger"></span>
                             </div>
                         </div>
@@ -194,12 +194,12 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Meta Tags:</label>
+                                <label class="font-weight-bold lbl">Meta Tags:</label>
                             </div>
 
                             <div class="col-md-10">
                                 <div class="form-group">
-                                    <input asp-for="MetaTags" class="form-control" placeholder="Meta tag" />
+                                    <input asp-for="MetaTags" class="form-control metaTag" placeholder="Meta tag" />
                                     <span asp-validation-for="MetaTags" class="text-danger"></span>
                                 </div>
                             </div>
@@ -209,11 +209,11 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Header Tags:</label>
+                                <label class="font-weight-bold lbl">Header Tags:</label>
                             </div>
 
                             <div class="col-md-10">
-                                <textarea asp-for="HeaderTags" class="form-control" placeholder="Header Tags"></textarea>
+                                <textarea asp-for="HeaderTags" class="form-control headerTags" placeholder="Header Tags"></textarea>
                                 <span asp-validation-for="HeaderTags" class="text-danger"></span>
                             </div>
                         </div>
@@ -222,17 +222,17 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Categories:</label>
+                                <label class="font-weight-bold lbl">Categories:</label>
                             </div>
 
                             <div class="col-md-8">
-                                <input asp-for="Categories" class="form-control" placeholder="Categories"/>
+                                <input asp-for="Categories" class="form-control categories" placeholder="Categories" />
                                 <span asp-validation-for="Categories" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-2">
                                 <div class="form-group form-check">
-                                    <input class="form-check-input" asp-for="ShowInPdpcategories" /><label class="font-weight-bold">Display in PDP</label>
+                                    <input class="form-check-input showInPDPCategories" asp-for="ShowInPdpcategories" /><label class="font-weight-bold">Display in PDP</label>
                                 </div>
                             </div>
                         </div>
@@ -241,17 +241,17 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Related Products:</label>
+                                <label class="font-weight-bold lbl">Related Products:</label>
                             </div>
 
                             <div class="col-md-8">
-                                <input asp-for="AssociatedProducts" class="form-control" placeholder="Related Products"/>
+                                <input asp-for="AssociatedProducts" class="form-control associatedProducts" placeholder="Related Products" />
                                 <span asp-validation-for="AssociatedProducts" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-2">
                                 <div class="form-group form-check">
-                                    <input class="form-check-input" asp-for="ShowInPdpproducts" /><label class="font-weight-bold">Display in PDP</label>
+                                    <input class="form-check-input showInPDPProducts" asp-for="ShowInPdpproducts" /><label class="font-weight-bold">Display in PDP</label>
                                 </div>
                             </div>
                         </div>
@@ -260,10 +260,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Content:</label>
+                                <label class="font-weight-bold lbl">Content:</label>
                             </div>
                             <div class="col-md-10">
-                                <textarea id="mytextarea" asp-for="Content" class="form-control"></textarea>
+                                <textarea id="mytextarea" asp-for="Content" class="form-control content"></textarea>
                                 <span asp-validation-for="Content" class="text-danger"></span>
                             </div>
                         </div>
@@ -272,10 +272,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Tags:</label>
+                                <label class="font-weight-bold lbl">Tags:</label>
                             </div>
                             <div class="col-md-10">
-                                <input asp-for="Tags" class="form-control" placeholder="Tags" />
+                                <input asp-for="Tags" class="form-control tags" placeholder="Tags" />
                                 <span asp-validation-for="Tags" class="text-danger"></span>
                             </div>
                         </div>
@@ -284,10 +284,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Redirect URL:</label>
+                                <label class="font-weight-bold lbl">Redirect URL:</label>
                             </div>
                             <div class="col-md-10">
-                                <input asp-for="RedirectUrl" class="form-control" placeholder="Redirect URL"/>
+                                <input asp-for="RedirectUrl" class="form-control redirectURL" placeholder="Redirect URL" />
                                 <span asp-validation-for="RedirectUrl" class="text-danger"></span>
                             </div>
                         </div>
@@ -296,10 +296,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="font-weight-bold" style="float:right">Redirection Type:</label>
+                                <label class="font-weight-bold lbl">Redirection Type:</label>
                             </div>
                             <div class="col-md-10">
-                                <input asp-for="RedirectionType" class="form-control" placeholder="Redirection Type"/>
+                                <input asp-for="RedirectionType" class="form-control redirectionType" placeholder="Redirection Type" />
                                 <span asp-validation-for="RedirectionType" class="text-danger"></span>
                             </div>
                         </div>
@@ -307,16 +307,19 @@
                 </div>
                 <div class="card-footer bg-light">
                     <div class="form-group" style="float:right">
-                        <a type="button" class="btn btn-secondary" asp-action="Index">Back to List</a>
                         <input type="submit" value="Create" class="btn btn-secondary" />
                     </div>
                 </div>
             </div>
         </form>
+        <button class="testController btn btn-success">TEST</button>
+        <a type="button" class="btn btn-secondary" asp-action="Index">Back to List</a>
     </div>
 </div>
 
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://cdn.tiny.cloud/1/347g3dndd95pketovuudxrv1az2u9bp87f5z2g47udpq3lm8/tinymce/5/tinymce.min.js" referrerpolicy="origin" /></script>
+    <script src="~/js/Create.js"></script>
 }

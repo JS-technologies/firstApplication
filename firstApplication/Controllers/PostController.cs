@@ -68,13 +68,13 @@ namespace firstApplication.Controllers
                         number = 4;
                         break;
                 }
-                bService.AddBlog(blogPostsV2.Id, blogPostsV2.SiteId, blogPostsV2.LangCode, blogPostsV2.Title, blogPostsV2.MetaDescription, blogPostsV2.Content, blogPostsV2.Url, blogPostsV2.ShowInHp, blogPostsV2.Label, blogPostsV2.MetaTags, blogPostsV2.RedirectUrl, blogPostsV2.PublishEndDate, number, blogPostsV2.RedirectionType, blogPostsV2.Seoscore, blogPostsV2.CoverImageUrl, blogPostsV2.Tags, blogPostsV2.HeaderTags, blogPostsV2.Categories, blogPostsV2.HomePageImageUrl, blogPostsV2.CoverImageAlt, blogPostsV2.HomePageImageAlt, blogPostsV2.AssociatedProducts, blogPostsV2.ShowInPdpcategories, blogPostsV2.ShowInPdpproducts);
+                bService.AddBlog(blogPostsV2);
                 return RedirectToAction("Index");
             }
             return View();
         }
 
-        /*
+        
         // GET: Post/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -83,7 +83,7 @@ namespace firstApplication.Controllers
                 return NotFound();
             }
 
-            var blogPostsV2 = await _context.BlogPostsV2.FindAsync(id);
+            var blogPostsV2 = bService.getByBlogById(id);
             if (blogPostsV2 == null)
             {
                 return NotFound();
@@ -107,12 +107,11 @@ namespace firstApplication.Controllers
             {
                 try
                 {
-                    _context.Update(blogPostsV2);
-                    await _context.SaveChangesAsync();
+                    bService.editBlog(blogPostsV2);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BlogPostsV2Exists(blogPostsV2.Id))
+                    if (bService.checkIfBlogExists(blogPostsV2.Id) == false)
                     {
                         return NotFound();
                     }
@@ -124,7 +123,7 @@ namespace firstApplication.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(blogPostsV2);
-        }*/
+        }
 
         // GET: Post/Delete/5
         public async Task<IActionResult> Delete(int id)
