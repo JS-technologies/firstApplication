@@ -30,7 +30,7 @@ namespace firstApplication.Services
             return blogDetails;
         }
 
-        public BlogPostsV2 AddBlog(BlogPostsV2 blogToAdd)
+        public bool AddBlog(BlogPostsV2 blogToAdd, out int blogId)
         {
             DateTime dateCreated = DateTime.Now;
             DateTime dateModified = DateTime.Now;
@@ -39,36 +39,73 @@ namespace firstApplication.Services
             DateTime startDate = DateTime.Now;
             blogToAdd.PublishStartDate = startDate;
             blogToAdd.PublishEndDate = null;
-            //BlogPostStatus stat = BlogPostStatus.Live; 
-            //switch(Status)
-            //{
-            //    case 1:
-            //        stat = BlogPostStatus.Live;
-            //    break;
-
-            //    case 2:
-            //        stat = BlogPostStatus.Archived;
-            //        break;
-
-            //    case 3:
-            //        stat = BlogPostStatus.Scheduled;
-            //        break;
-
-            //    case 4:
-            //        stat = BlogPostStatus.Draft;
-            //        break;
-            //}
-
-            //blogToAdd.Status = stat;
-            
             blogToAdd.CreatedById = 15;
             blogToAdd.LastModifiedById = 15;
             blogToAdd.IsDeleted = false;
-           
-            _context.Add(blogToAdd);
-            _context.SaveChangesAsync();
-            return blogToAdd;
+
+            try
+            {
+                _context.Add(blogToAdd);
+                _context.SaveChanges();
+                blogId = blogToAdd.Id;
+                return true;
+            }
+            catch (Exception) {
+                blogId = -1;
+                return false;
+            }
+            //return blogToAdd;
         }
+        public bool editBlog(BlogPostsV2 blogToEdit)
+        {
+            var blogToUpdate = _context.BlogPostsV2.FirstOrDefault(x => x.Id == blogToEdit.Id);
+
+            blogToUpdate.Label = blogToEdit.Label;
+            blogToUpdate.SiteId = blogToEdit.SiteId;
+            blogToUpdate.Status = blogToEdit.Status;
+            blogToUpdate.LangCode = blogToEdit.LangCode;
+            blogToUpdate.Url = blogToEdit.Url;
+            blogToUpdate.Title = blogToEdit.Title;
+            blogToUpdate.HomePageImageUrl = blogToEdit.HomePageImageUrl;
+            blogToUpdate.HomePageImageAlt = blogToEdit.HomePageImageAlt;
+            blogToUpdate.CoverImageUrl = blogToEdit.CoverImageUrl;
+            blogToUpdate.CoverImageAlt = blogToEdit.CoverImageAlt;
+            blogToUpdate.Seoscore = blogToEdit.Seoscore;
+            blogToUpdate.MetaDescription = blogToEdit.MetaDescription;
+            blogToUpdate.MetaTags = blogToEdit.MetaTags;
+            blogToUpdate.HeaderTags = blogToEdit.HeaderTags;
+            blogToUpdate.Categories = blogToEdit.Categories;
+            blogToUpdate.ShowInPdpcategories = blogToEdit.ShowInPdpcategories;
+            blogToUpdate.AssociatedProducts = blogToEdit.AssociatedProducts;
+            blogToUpdate.ShowInPdpproducts = blogToEdit.ShowInPdpproducts;
+            blogToUpdate.Content = blogToEdit.Content;
+            blogToUpdate.Tags = blogToEdit.Tags;
+            blogToUpdate.RedirectUrl = blogToEdit.RedirectUrl;
+            blogToUpdate.RedirectionType = blogToEdit.RedirectionType;
+            blogToUpdate.PublishEndDate = blogToEdit.PublishEndDate;
+            blogToUpdate.IsDeleted = blogToEdit.IsDeleted;
+
+
+            blogToEdit.CreatedById = 15;
+            blogToEdit.LastModifiedById = 15;
+            DateTime dateModified = DateTime.Now;
+            blogToEdit.DateModified = dateModified;
+            DateTime startDate = DateTime.Now;
+            blogToEdit.PublishStartDate = startDate;
+
+            try
+            {
+                _context.Update(blogToUpdate);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            //return blogToEdit;
+        }
+
 
         public BlogPostsV2 deleteBlog(int id)
         {
@@ -89,23 +126,7 @@ namespace firstApplication.Services
             return blogPostToEdit;
         }
 
-        public BlogPostsV2 editBlog(BlogPostsV2 blogToEdit)
-        {
-
-            blogToEdit.CreatedById = 15;
-            blogToEdit.LastModifiedById = 15;
-            DateTime dateCreated = DateTime.Now;
-            DateTime dateModified = DateTime.Now;
-            blogToEdit.DateCreated = dateCreated;
-            blogToEdit.DateModified = dateModified;
-            DateTime startDate = DateTime.Now;
-            blogToEdit.PublishStartDate = startDate;
-
-            _context.BlogPostsV2.Update(blogToEdit);
-            _context.SaveChangesAsync();
-            return blogToEdit;
-        }
-
+        
         public bool checkIfBlogExists(int id)
         {
             bool decider;
@@ -122,5 +143,6 @@ namespace firstApplication.Services
             }
             return decider;
         }
+
     }
 }

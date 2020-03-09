@@ -1,0 +1,62 @@
+﻿@model IEnumerable<firstApplication.Models.BlogPostsV2>
+
+@{
+    ViewData["Title"] = "loadBlogs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                Creation Date
+            </th>
+            <th>
+                Updated
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            var dateCreated = item.DateCreated.ToString("dd/MM/yyyy HH:mm");
+            var dateModified = item.DateModified.ToString("dd/MM/yyyy HH:mm");
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Url)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+
+                    @Html.DisplayFor(modelItem => dateCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => dateModified)
+                </td>
+                <td>
+                    <a class="font-weight-bold">@Html.DisplayFor(modelItem => item.LangCode)</a>:@Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a class="btn btn-secondary text-white" asp-controller="Post" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-pencil-alt"></i></a>
+                    <a class="btn btn-secondary text-white" asp-controller="Post" asp-action="Details" asp-route-id="@item.Id"><i class="far fa-eye"></i></a>
+                    <a class="btn btn-secondary text-white" asp-controller="Post" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="~/js/index.js"></script>

@@ -1,6 +1,42 @@
 ﻿function hookHandlers() {
     $(".testController").on("click", function (e) {
-        Console.log(e);
+        var blogpost = {
+            siteId: $('.siteID').val(), 
+            title: $('.Title').val(),
+            langCode: $('.langCode').val(),
+            metaDescription: $('.metaDescription').val(),
+            content: tinymce.editors.mytextarea.getContent(),
+            url: $('.URL').val(),
+            showInHp: $('.showInHP').val(),
+            label: $('.label').val(),
+            status: $('.status:checked').val(),
+            metaTags: $('.metaTag').val(),
+            redirectUrl: $('.redirectURL').val(),
+            redirectionType: $('.redirectionType').val(),
+            seoscore: $('#seoScoreId').val(),
+            coverImageUrl: $('.coverImageURL').val(),
+            tags: $('.tags').val(),
+            headerTags: $('.headerTags').val(),
+            categories: $('.categories').val(),
+            homePageImageUrl: $('.HPInputURL').val(),
+            coverImageAlt: $('.coverPhotoALT').val(),
+            homePageImageAlt: $('.HPImageAlt').val(),
+            associatedProducts: $('.associatedProducts').val(),
+            showInPdpcategories: $('.showInPDPCategories').val(),
+            showInPdpproducts: $('.showInPDPProducts').val()
+        };
+
+        $.ajax("/Post/Create", {
+            async: false,
+            type: "POST",
+            data: { blogpost: blogpost },
+            success: function (data) {
+                window.location.href = "/Post/Edit/" + data.blogId
+            },
+            fail: function (data) {
+                console.log('failed');
+            }
+        })
     });
 }
 

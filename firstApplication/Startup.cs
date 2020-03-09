@@ -25,6 +25,7 @@ namespace firstApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TheseusRDContext>(option => option.UseSqlServer(Configuration.GetConnectionString("TheseusRDDatabase")));
+            services.AddDbContext<TheseusContext>(option => option.UseSqlServer("Server=laredouteosp,9004;Database=Theseus;User Id= anthony borg; Password=rem;"));
             services.AddControllersWithViews();
         }
 

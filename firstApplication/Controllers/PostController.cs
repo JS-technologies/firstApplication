@@ -43,40 +43,75 @@ namespace firstApplication.Controllers
         // POST: Post/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create([Bind("Id,SiteId,LangCode,Title,MetaDescription,Content,Url,ShowInHp,Label,MetaTags,DateCreated,DateModified,RedirectUrl,PublishStartDate,PublishEndDate,Status,RedirectionType,Seoscore,CoverImageUrl,Tags,HeaderTags,Categories,CreatedById,LastModifiedById,IsDeleted,HomePageImageUrl,CoverImageAlt,HomePageImageAlt,AssociatedProducts,ShowInPdpcategories,ShowInPdpproducts")] BlogPostsV2 blogPostsV2)
+        //{
+        //    int number = 0;
+        //    if (ModelState.IsValid)
+        //    {
+        //        switch (blogPostsV2.Status)
+        //        {
+        //            case BlogPostStatus.Live:
+        //                number = 1;
+        //                break;
+
+        //            case BlogPostStatus.Archived:
+        //                number = 2;
+        //                break;
+
+        //            case BlogPostStatus.Scheduled:
+        //                number = 3;
+        //                break;
+
+        //            case BlogPostStatus.Draft:
+        //                number = 4;
+        //                break;
+        //        }
+        //        bService.AddBlog(blogPostsV2);
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View();
+        //}
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SiteId,LangCode,Title,MetaDescription,Content,Url,ShowInHp,Label,MetaTags,DateCreated,DateModified,RedirectUrl,PublishStartDate,PublishEndDate,Status,RedirectionType,Seoscore,CoverImageUrl,Tags,HeaderTags,Categories,CreatedById,LastModifiedById,IsDeleted,HomePageImageUrl,CoverImageAlt,HomePageImageAlt,AssociatedProducts,ShowInPdpcategories,ShowInPdpproducts")] BlogPostsV2 blogPostsV2)
+        public JsonResult Create(BlogPostsV2 blogpost)
         {
-            int number = 0;
-            if (ModelState.IsValid)
+            //int number = 0;
+            //if (ModelState.IsValid)
+            //{
+            //    switch (blogPostsV2.Status)
+            //    {
+            //        case BlogPostStatus.Live:
+            //            number = 1;
+            //            break;
+
+            //        case BlogPostStatus.Archived:
+            //            number = 2;
+            //            break;
+
+            //        case BlogPostStatus.Scheduled:
+            //            number = 3;
+            //            break;
+
+            //        case BlogPostStatus.Draft:
+            //            number = 4;
+            //            break;
+            //    }
+            var result = bService.AddBlog(blogpost, out int blogId);
+            return Json(new
             {
-                switch (blogPostsV2.Status)
-                {
-                    case BlogPostStatus.Live:
-                        number = 1;
-                        break;
-
-                    case BlogPostStatus.Archived:
-                        number = 2;
-                        break;
-
-                    case BlogPostStatus.Scheduled:
-                        number = 3;
-                        break;
-
-                    case BlogPostStatus.Draft:
-                        number = 4;
-                        break;
-                }
-                bService.AddBlog(blogPostsV2);
-                return RedirectToAction("Index");
-            }
-            return View();
+                isSuccess = result,
+                blogId
+            });
+                //return RedirectToAction("Index");
+            //}
+            //return View();
         }
 
-        
+
         // GET: Post/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -89,40 +124,20 @@ namespace firstApplication.Controllers
                 return NotFound();
             }
             return View(blogPostsV2);
+
         }
 
         // POST: Post/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SiteId,LangCode,Title,MetaDescription,Content,Url,ShowInHp,Label,MetaTags,DateCreated,DateModified,RedirectUrl,PublishStartDate,PublishEndDate,Status,RedirectionType,Seoscore,CoverImageUrl,Tags,HeaderTags,Categories,CreatedById,LastModifiedById,IsDeleted,HomePageImageUrl,CoverImageAlt,HomePageImageAlt,AssociatedProducts,ShowInPdpcategories,ShowInPdpproducts")] BlogPostsV2 blogPostsV2)
+        public JsonResult Edit(BlogPostsV2 blogpost)
         {
-            if (id != blogPostsV2.Id)
+            var result = bService.editBlog(blogpost);
+            return Json(new
             {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    bService.editBlog(blogPostsV2);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (bService.checkIfBlogExists(blogPostsV2.Id) == false)
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(blogPostsV2);
+                isSuccess = result
+            });
         }
 
         // GET: Post/Delete/5
@@ -155,5 +170,6 @@ namespace firstApplication.Controllers
         {
             return _context.BlogPostsV2.Any(e => e.Id == id);
         }*/
+
     }
 }

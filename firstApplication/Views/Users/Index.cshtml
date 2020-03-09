@@ -1,0 +1,41 @@
+﻿@model IEnumerable<firstApplication.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                View Blogs
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    <a class="btn btn-secondary text-white" asp-action="loadBlogs" asp-route-id="@item.Id">Load Blogs</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="~/js/index.js"></script>
